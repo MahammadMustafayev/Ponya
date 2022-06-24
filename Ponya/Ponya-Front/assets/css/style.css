@@ -1,11 +1,81 @@
-*{
-   box-sizing: border-box;
-   margin: 0px;
-   padding: 0px;
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
 }
-.main-color{
+
+.main-color {
     color: #ff4b33 !important;
 }
-.main-bgcolor{
+
+.main-bgcolor {
     background-color: #ff4b33 !important;
+}
+.about-color{
+    color: #fd6255 !important;
+}
+.about-bgcolor{
+    background-color: #fd6255;
+}
+.contactbtn:hover {
+    border: 2px solid #ff4b33 !important;
+    background-color: white !important;
+    color: #ff4b33 !important;
+    transition: 0.5s;
+}
+.pt-10{
+    padding-top: 10% !important;
+}
+.btn-group{
+    border:  2px solid #ff4b33 !important;
+}
+.video:hover{
+    border:  2px solid #000 !important;
+    color: #000 !important;
+    transition: 0.3s;
+}
+.see:hover{
+    background-color:  #ff4b33 !important;
+    color: white !important;
+    transition: 0.5s;
+}
+.hj:hover{
+    background-color: #ff4b33 !important;
+    transition: 0.5s;
+}
+.gh:hover{
+    color: gray !important;
+}
+.fs-65{
+    font-size: 65px;
+}
+.nav-link:hover{
+    color: #ff4b33 !important;
+}
+.dropdown-item:hover{
+    color: #ff4b33 !important;
+}
+.vh-40{
+    height: 40vh !important;
+}
+.vh-50{
+    height: 50vh !important;
+}
+.coruier {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.tahoma {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.kl:hover{
+    color:  #ff4b33 !important;
+    margin-bottom: 20px !important;
+}
+.btn-outline-narinci{
+    border: 2px solid #ff4b33 !important;
+}
+.btn-outline-narinci:hover{
+    background-color: #ff4b33 !important;
+    color: white !important;
 }
