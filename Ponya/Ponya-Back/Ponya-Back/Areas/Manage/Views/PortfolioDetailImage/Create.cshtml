@@ -1,0 +1,28 @@
+﻿@model PortfolioDetailImage
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Manage/Views/Shared/_ManageLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label asp-for="IsDeleted">Is Deleted</label>
+                <input asp-for="IsDeleted" class="form-control" placeholder="Is Deleted">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="Photo"></label>
+                <input type="file" asp-for="Photo" class="form-control" placeholder="Image">
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+    </form>
+</div>
+
+

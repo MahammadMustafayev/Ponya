@@ -1,0 +1,53 @@
+﻿@model List<Hero>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_ManageLayout.cshtml";
+    int order = 0;
+}
+
+<div class="container-fluid">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <h1>Hero</h1>
+        <a asp-action="Create" asp-controller="Hero" class="btn btn-primary">Create</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Up Title</th>
+                <th scope="col"> Title 1</th>
+                <th scope="col"> Title 2</th>
+                <th scope="col">Description </th>
+                <th scope="col">Down Title </th>
+                <th scope="col">Menu Description </th>
+                <th scope="col"> Is Deleted</th>
+                <th scope="col"> Image</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                order++;
+                <tr>
+                    <th scope="row">@order</th>
+                    <td>@item.UpTitle</td>
+                    <td>@item.Title1</td>
+                    <td>@item.Title2</td>
+                    <td>@item.Description</td>
+                    <td>@item.DownTitle</td>
+                    <td>@item.MenuDesc</td>
+                    <td>@(item.IsDeleted==true?"Deleted":"On Active")</td>
+                    <td><img src="~/assets/uploadimg/@item.Image" style="max-width:100px" /></td>
+                    <td>
+                        <a asp-action="Edit" asp-controller="Hero" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-controller="Hero" asp-route-id="@item.Id" class="btn btn-secondary btn-sweet-delete">Delete</a>
+                        <a asp-action="PermaDelete" asp-controller="Hero" asp-route-id="@item.Id" class="btn btn-danger btn-sweet-delete">Perma-Delete</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

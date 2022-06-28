@@ -14,3 +14,11 @@ d.forEach(x => {
         })
     })
 })
+
+// let nav = document.querySelectorAll(".nav-item")
+
+// nav.addEventListener("click",function(){
+//     nav.children(0).add.classList("main-color");
+// })
+
+

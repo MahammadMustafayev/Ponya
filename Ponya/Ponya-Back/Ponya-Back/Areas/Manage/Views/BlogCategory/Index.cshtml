@@ -1,0 +1,41 @@
+﻿@model List<BlogCategory>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_ManageLayout.cshtml";
+    int order = 0;
+}
+
+<div class="container-fluid">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <h1>Blog Category</h1>
+        <a asp-action="Create" asp-controller="BlogCategory" class="btn btn-primary">Create</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col"> Name</th>
+                <th scope="col"> Is Deleted</th>
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                order++;
+                <tr>
+                    <th scope="row">@order</th>
+                    <td>@item.CatogryName</td>
+                    <td>@(item.IsDeleted==true?"Deleted":"On Active")</td>
+                    
+                    <td>
+                        <a asp-action="Edit" asp-controller="BlogCategory" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-controller="BlogCategory" asp-route-id="@item.Id" class="btn btn-secondary btn-sweet-delete">Delete</a>
+                        <a asp-action="PermaDelete" asp-controller="BlogCategory" asp-route-id="@item.Id" class="btn btn-danger btn-sweet-delete">Perma-Delete</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>

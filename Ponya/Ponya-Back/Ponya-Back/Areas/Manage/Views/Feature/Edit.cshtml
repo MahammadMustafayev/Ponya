@@ -1,0 +1,40 @@
+﻿@model Features
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Manage/Views/Shared/_ManageLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Title">Title</label>
+                <input asp-for="Title" class="form-control" placeholder="Title">
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Subtitle">SubTitle</label>
+                <input asp-for="Subtitle" class="form-control" placeholder="Subtitle">
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Icon">Icon</label>
+                <input asp-for="Icon" class="form-control" placeholder="Icon">
+            </div>
+        </div>
+        <div class="form-row">
+
+            <div class="form-group col-md-4">
+                <label asp-for="IsDeleted">Is Deleted</label>
+                <input asp-for="IsDeleted" class="form-control" placeholder="Is Deleted">
+            </div>
+
+            <div class="form-group col-md-4">
+                <label asp-for="Photo"></label>
+                <input type="file" asp-for="Photo" class="form-control" placeholder="Image">
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Edit</button>
+        </div>
+    </form>
+</div>
+
