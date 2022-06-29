@@ -65,12 +65,13 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: BlogCategoryController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
         {
             BlogCategory blogCategory = _context.BlogCategories.Find(id);
             if (blogCategory is null) return RedirectToAction("Index", "404");
-            if (blogCategory.IsDeleted == false) blogCategory.IsDeleted = true;
+            if (blogCategory.IsDeleted == true) blogCategory.IsDeleted = false;
             blogCategory.IsDeleted = false;
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));

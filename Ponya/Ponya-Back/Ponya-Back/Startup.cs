@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Ponya_Back.DAL;
 using Ponya_Back.Models;
+using Ponya_Back.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -30,6 +31,7 @@ namespace Ponya_Back
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddSession();
             services.AddDbContext<AppDbContext>(opt =>
             {
                 opt.UseSqlServer(Configuration.GetConnectionString("Default"));
@@ -50,7 +52,9 @@ namespace Ponya_Back
                 opt.Lockout.MaxFailedAccessAttempts = 3;
                 opt.Lockout.DefaultLockoutTimeSpan = System.TimeSpan.FromMinutes(10);
             });
-            
+            services.AddScoped<LayoutServices>();
+            services.AddScoped<ContactServices>();
+            services.AddScoped<SocialServices>();
             services.AddHttpContextAccessor();
             services.ConfigureApplicationCookie(options =>
             {
@@ -71,7 +75,7 @@ namespace Ponya_Back
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
+            app.UseSession();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

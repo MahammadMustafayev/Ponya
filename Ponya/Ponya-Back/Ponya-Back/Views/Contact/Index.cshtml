@@ -1,4 +1,8 @@
-﻿
+﻿@using Ponya_Back.Services
+@inject ContactServices service
+@{
+    Dictionary<string, string> settings = service.GetSettings();
+}
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -35,38 +39,37 @@
                         <ul class="col">
                             <li class="list-unstyled">
                                 <button class=" btn main-bgcolor form-control-lg   fw-bold text-white contactbtn">
-                                    <a href="contact.html" class="text-decoration-underline text-white ">
-                                        <i class="bi bi-messenger text-white me-3"></i>Messenger
+                                    <a href="@settings["MessengerUrl"]" class="text-decoration-underline text-white ">
+                                        <i class="@settings["MessengerIcon"] text-white me-3"></i>Messenger
                                     </a>
                                 </button>
                             </li>
                             <li class="list-unstyled pt-3">
                                 <button class="  btn main-bgcolor form-control-lg  fw-bold text-white contactbtn">
-                                    <a href="contact.html" class="text-decoration-underline text-white">
-                                        <i class="bi bi-whatsapp text-white me-3"></i>Whatsapp
+                                    <a href="@settings["WhatsappUrl"]" class="text-decoration-underline text-white">
+                                        <i class="@settings["WhatsappIcon"] text-white me-3"></i>Whatsapp
                                     </a>
                                 </button>
                             </li>
                             <li class="list-unstyled pt-3">
                                 <button class=" btn main-bgcolor form-control-lg  fw-bold text-white contactbtn">
-                                    <a href="contact.html" class="text-decoration-underline text-white">
-                                        <i class="bi bi-telegram text-white me-4"></i>Telegram
+                                    <a href="@settings["TelegramUrl"]" class="text-decoration-underline text-white">
+                                        <i class="@settings["TelegramIcon"] text-white me-4"></i>Telegram
                                     </a>
                                 </button>
                             </li>
                         </ul>
                     </div>
                     <div class="col-4 rounded-3 m" style="background-color: rgb(223, 223, 223);">
-                        <p><i class="bi bi-phone main-color me-3"></i>+66 99 828 7890</p>
-                        <p><i class="bi bi-envelope main-color me-3"></i>hello@ponyamedia.com</p>
+                        <p><i class="bi bi-phone main-color me-3"></i>@settings["PhoneNumber"]</p>
+                        <p><i class="bi bi-envelope main-color me-3"></i>@settings["EmailAddress"]</p>
                         <p>
-                            <i class="bi bi-geo-alt-fill main-color me-3"></i>1640 Simpson Avenue, Pennsylvania
-                            PA 17401
+                            <i class="bi bi-geo-alt-fill main-color me-3"></i>@settings["Address"]
                         </p>
                     </div>
                 </div>
                 <iframe class="pt-4"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3039.748317523108!2d49.813257115705156!3d40.37010466639721!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307dc397d94dc3%3A0x617bc46b47244c00!2sAzerbaijan%20Technical%20University!5e0!3m2!1sen!2s!4v1656064599337!5m2!1sen!2s"
+                        src="@settings["Iframe"]"
                         width="550" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
@@ -135,7 +138,7 @@
                     <h5 class="tahoma text-dark">Comments/ Questions<span class="main-color"> *</span></h5>
                     <textarea class="form-control pt-3 " name="" id="" cols="20" rows="10"></textarea>
                     <div class="pt-5 pb-3">
-                        <button class="btn  form-control-sm main-bgcolor fw-bold text-white">
+                        <button type="submit" class="btn  form-control-sm main-bgcolor fw-bold text-white">
                             Send
                             Message
                         </button>

@@ -1,0 +1,54 @@
+﻿@model List<Pricing> 
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Manage/Views/Shared/_ManageLayout.cshtml";
+    int order = 0;
+}
+
+<div class="container-fluid">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <h1>Pricing</h1>
+        <a asp-action="Create" asp-controller="Pricing" class="btn btn-primary">Create</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Title</th>
+                <th scope="col">Cost Price</th>
+                <th scope="col">Sell Price</th>
+                <th scope="col">Discount Price</th>
+
+                <th scope="col">Stock Count </th>
+                <th scope="col"> Is Deleted</th>
+                <th scope="col"> Is Deleted</th>
+
+                <th scope="col">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                order++;
+                <tr>
+                    <th scope="row">@order</th>
+                    <td>@item.Title</td>
+                    <td>@item.CostPrice</td>
+                    <td>@item.SellPrice</td>
+                    <td>@item.DiscountPrice</td>
+                    <td>@item.StockCount</td>
+                    <td>@(item.IsDeleted==true?"Deleted":"On Active")</td>
+                    <td>@(item.IsNew==true?"True":"False")</td>
+
+                    <td>
+                        <a asp-action="Edit" asp-controller="Pricing" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                        <a asp-action="Delete" asp-controller="Pricing" asp-route-id="@item.Id" class="btn btn-secondary btn-sweet-delete">Delete</a>
+                        <a asp-action="PermaDelete" asp-controller="Pricing" asp-route-id="@item.Id" class="btn btn-danger btn-sweet-delete">Perma-Delete</a>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

@@ -18,6 +18,8 @@ namespace Ponya_Back.Models
         [MaxLength(255)]
         public string Subject { get; set; }
         public string Comments { get; set; }
+        
+        public DateTime CreatedTime { get; set; }
         public bool IsDeleted { get; set; }
     }
 }

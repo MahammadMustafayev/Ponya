@@ -38,7 +38,6 @@
   <ItemGroup>
     <Folder Include="Areas\Manage\Data\" />
     <Folder Include="Areas\Manage\Models\" />
-    <Folder Include="Services\" />
     <Folder Include="wwwroot\assets\uploadimg\" />
   </ItemGroup>
 

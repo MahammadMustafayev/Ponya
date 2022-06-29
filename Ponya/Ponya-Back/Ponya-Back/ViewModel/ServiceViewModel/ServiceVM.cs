@@ -11,5 +11,6 @@ namespace Ponya_Back.ViewModel.ServiceViewModel
         public List<Hero> Heroes { get; set; }
         public List<Features> Features { get; set; }
         public List<PortfolioDetailImage> PortfolioDetailImages { get; set; }
+        
     }
 }

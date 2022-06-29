@@ -18,12 +18,11 @@
                 <input asp-for="Description" class="form-control" placeholder="Description">
             </div>
             <div class="form-group col-md-4">
-                @if (Model.BlogCategory.IsDeleted == false)
-                {
+                
                 <select asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.Categories,nameof(BlogCategory.Id),nameof(BlogCategory.CatogryName)))" class="form-select">
                     <option disabled selected>Categories</option>
                 </select>
-                }
+                
                     
                 </div>
         </div>

@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using Ponya_Back.Services
+@inject LayoutServices service
+@{ 
+    Dictionary<string, string> settings = service.GetSettings();
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -16,7 +21,7 @@
         <!-- Header -->
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
-                <img src="~/assets/image/header/logo-8.png" width="150" height="50" alt="">
+                <img src="~/assets/image/header/@settings["Logo"]" width="150" height="50" alt="">
                 <button class="navbar-toggler h-25" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -25,13 +30,13 @@
                 <div class="collapse navbar-collapse ms-5 " id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 ms-5 gap-4  mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active fw-bold main-color" aria-current="page" href="index.html">Home</a>
+                            <a class="nav-link active fw-bold main-color" aria-current="page" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  fw-bold" href="about.html">About</a>
+                            <a class="nav-link  fw-bold" asp-controller="About" asp-action="Index">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  fw-bold" href="blog.html">Blog</a>
+                            <a class="nav-link  fw-bold" asp-controller="Blog" asp-action="Index">Blog</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle  fw-bold" href="#" id="navbarDropdown" role="button"
@@ -39,47 +44,52 @@
                                 Portfolio
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item  fw-bold" href="portfolio.html">Portfolio</a></li>
+                                <li><a class="dropdown-item  fw-bold" asp-controller="Portfolio" asp-action="Index">Portfolio</a></li>
                                 <li>
-                                    <a class="dropdown-item fw-bold" href="portfolio-detail.html">Portfolio Detail </a>
+                                    <a class="dropdown-item fw-bold" asp-controller="PortfolioDetail" asp-action="Index">Portfolio Detail </a>
                                 </li>
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link fw-bold " href="service.html">Service</a>
+                            <a class="nav-link fw-bold " asp-controller="Service" asp-action="Index">Service</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle fw-bold" href="#" id="navbarDropdown" role="button"
                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Pages
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item fw-bold" href="#">FAQ</a></li>
-                                <li><a class="dropdown-item fw-bold" href="404.html">404 </a></li>
-                                <li><a class="dropdown-item fw-bold" href="#">Single Post </a></li>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">                        
+                                <li><a class="dropdown-item fw-bold" asp-controller="404" asp-action="Index">404 </a></li>
                             </ul>
                         </li>
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle  fw-bold" href="#" id="navbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    My Account
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li>
+                                        <a class="dropdown-item  fw-bold"><i class="bi bi-person-circle"></i>@User.Identity.Name</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Auth" asp-action="SignOut" class="dropdown-item fw-bold"><i class="bi bi-door-open-fill"></i> Sign Out</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="Auth" asp-action="SignIn" asp-route-ReturnUrl="@Context.Request.Path" class="nav-link fw-bold " >Login</a>
+                            </li>
+                        }
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle  fw-bold" href="#" id="navbarDropdown" role="button"
-                               data-bs-toggle="dropdown" aria-expanded="false">
-                                My Account
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li>
-                                    <a class="dropdown-item  fw-bold"><i class="bi bi-person-circle"></i>User Name</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item fw-bold"><i class="bi bi-door-open-fill"></i> Sign Out</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-bold " href="login.html">Login</a>
-                        </li>
+
                         <li class="nav-item">
                             <button class="nav-link btn main-bgcolor fw-bold text-white contactbtn">
-                                <a href="contact.html" class="text-decoration-none text-white">Contact Us</a>
+                                <a asp-controller="Contact" asp-action="Index" class="text-decoration-none text-white">Contact Us</a>
                             </button>
                         </li>
                     </ul>
@@ -96,9 +106,9 @@
                         <img src="~/assets/image/header/logo-8.png" alt="">
                         <p class="pt-3 text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
                         <ul class="row pt-2">
-                            <li class="col list-unstyled text-white kl fs-3"><i class="bi bi-facebook"></i></li>
-                            <li class="col list-unstyled text-white kl fs-3"><i class="bi bi-twitter"></i></li>
-                            <li class="col list-unstyled text-white kl fs-3"><i class="bi bi-youtube"></i></li>
+                            <li class="col list-unstyled text-white kl fs-3"><i class="@settings["FacebookIcon"]"><a href="@settings["FacebookUrl"]"></a></i></li>
+                            <li class="col list-unstyled text-white kl fs-3"><i class="@settings["TwitterIcon"]"></i><a href="@settings["TwitterUrl"]"></a></li>
+                            <li class="col list-unstyled text-white kl fs-3"><i class="@settings["YoutubeIcon"]"></i><a href="@settings["YoutubeUrl"]"></a></li>
                         </ul>
                     </div>
                     <div class="col-md-3">
@@ -108,7 +118,6 @@
                             <li class="row list-unstyled nav-link text-white fs-5">Blog</li>
                             <li class="row list-unstyled nav-link text-white fs-5">Service</li>
                             <li class="row list-unstyled nav-link text-white fs-5">Portfolio</li>
-                            <li class="row list-unstyled nav-link text-white fs-5">FAQ</li>
                             <li class="row list-unstyled nav-link text-white fs-5">Contact</li>
                         </ul>
 
@@ -119,14 +128,14 @@
                             <li class="row list-unstyled nav-link text-white fs-5">Terms & Conditions</li>
                             <li class="row list-unstyled nav-link text-white fs-5">Privacy Policy</li>
                             <li class="row list-unstyled nav-link text-white fs-5">Press Release</li>
-                            <li class="row list-unstyled nav-link text-white fs-5">Affiliates</li>
+                            <li class="row list-unstyled nav-link text-white fs-5"><a asp-area="Manage" asp-controller="Hero" asp-action="Index">Affiliates</a></li>
 
                         </ul>
                     </div>
                     <div class="col-md-3">
                         <h4 class="text-white">Newsletter</h4>
                         <input type="email" placeholder="Email" class="form-control mb-4">
-                        <button class="btn btn-outline-narinci form-control-lg main-color">Subscribe</button>
+                        <button type="submit" class="btn btn-outline-narinci form-control-lg main-color">Subscribe</button>
                     </div>
                 </div>
             </div>
