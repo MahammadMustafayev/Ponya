@@ -140,7 +140,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: BlogController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
+        
         public ActionResult Delete(int id)
         {
             Blog blog = _context.Blogs.Find(id);
@@ -152,8 +152,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: BlogController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult PermaDelete(int id)
         {
             Blog blog = _context.Blogs.Find(id);

@@ -136,7 +136,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
         }
         // GET: FeatureController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
+       
         public ActionResult Delete(int id)
         {
             Features features = _context.Features.Find(id);
@@ -151,8 +151,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: FeatureController/Delete/5
-        [HttpDelete]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult PermaDelete(int id)
         {
             Features features = _context.Features.Find(id);

@@ -37,13 +37,15 @@
                     <td>@item.SellPrice</td>
                     <td>@item.DiscountPrice</td>
                     <td>@item.StockCount</td>
-                    <td>@(item.IsDeleted==true?"Deleted":"On Active")</td>
-                    <td>@(item.IsNew==true?"True":"False")</td>
+                    <td class="@(item.IsDeleted?"text-danger":"text-info")">@(item.IsDeleted==true?"Deleted":"On Active")</td>
+                    <td class="@(item.IsDeleted?"text-danger":"text-info")">@(item.IsNew==true?"True":"False")</td>
 
                     <td>
-                        <a asp-action="Edit" asp-controller="Pricing" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                        <a asp-action="Delete" asp-controller="Pricing" asp-route-id="@item.Id" class="btn btn-secondary btn-sweet-delete">Delete</a>
-                        <a asp-action="PermaDelete" asp-controller="Pricing" asp-route-id="@item.Id" class="btn btn-danger btn-sweet-delete">Perma-Delete</a>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <a asp-action="Edit" asp-controller="Pricing" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                            <a asp-action="Delete" asp-controller="Pricing" asp-route-id="@item.Id" class="btn btn-info btn-sweet-delete">Delete</a>
+                            <a asp-action="PermaDelete" asp-controller="Pricing" asp-route-id="@item.Id" class="btn btn-danger btn-sweet-delete">Perma-Delete</a>
+                            </div>
                     </td>
                 </tr>
             }

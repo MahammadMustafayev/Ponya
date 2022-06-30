@@ -26,12 +26,14 @@
                 <tr>
                     <th scope="row">@order</th>
                     <td>@item.CategoryName</td>
-                    <td>@(item.IsDeleted==true?"Deleted":"On Active")</td>
+                    <td class="@(item.IsDeleted?"text-danger":"text-info")">@(item.IsDeleted==true?"Deleted":"On Active")</td>
 
                     <td>
-                        <a asp-action="Edit" asp-controller="PortfolioCategory" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                        <a asp-action="Delete" asp-controller="PortfolioCategory" asp-route-id="@item.Id" class="btn btn-secondary btn-sweet-delete">Delete</a>
-                        <a asp-action="PermaDelete" asp-controller="PortfolioCategory" asp-route-id="@item.Id" class="btn btn-danger btn-sweet-delete">Perma-Delete</a>
+                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                            <a asp-action="Edit" asp-controller="PortfolioCategory" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                            <a asp-action="Delete" asp-controller="PortfolioCategory" asp-route-id="@item.Id" class="btn btn-info btn-sweet-delete">Delete</a>
+                            <a asp-action="PermaDelete" asp-controller="PortfolioCategory" asp-route-id="@item.Id" class="btn btn-danger btn-sweet-delete">Perma-Delete</a>
+                            </div>
                     </td>
                 </tr>
             }

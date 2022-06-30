@@ -132,7 +132,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: AboutUsController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
+        
         public ActionResult Delete(int id)
         {
             AboutUs aboutUs = _context.AboutUs.Find(id);
@@ -144,8 +144,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: AboutUsController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult PermaDelete(int id)
         {
             AboutUs aboutUs = _context.AboutUs.Find(id);

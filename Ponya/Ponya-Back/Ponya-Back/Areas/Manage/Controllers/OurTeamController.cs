@@ -136,7 +136,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: OurTeamController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
+      
         public ActionResult Delete(int id)
         {
             OurTeam ourTeam = _context.OurTeams.Find(id);
@@ -151,8 +151,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: OurTeamController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public ActionResult PermaDelete(int id)
         {
             OurTeam ourTeam = _context.OurTeams.Find(id);

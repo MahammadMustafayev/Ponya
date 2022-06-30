@@ -65,8 +65,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: BlogCategoryController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public IActionResult Delete(int id)
         {
             BlogCategory blogCategory = _context.BlogCategories.Find(id);
@@ -78,8 +77,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: BlogCategoryController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult PermaDelete(int id)
         {
             BlogCategory blogCategory = _context.BlogCategories.Find(id);

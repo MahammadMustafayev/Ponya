@@ -131,7 +131,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: PortfolioDetailImageController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
+        
         public ActionResult Delete(int id)
         {
             PortfolioDetailImage detailImage = _context.PortfolioDetailImages.Find(id);
@@ -143,8 +143,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: PortfolioDetailImageController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public ActionResult PermaDelete(int id)
         {
             PortfolioDetailImage detailImage = _context.PortfolioDetailImages.Find(id);

@@ -80,8 +80,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: ProggressController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult PermaDelete(int id)
         {
             Proggress proggress = _context.Proggresses.Find(id);

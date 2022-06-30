@@ -138,7 +138,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: PortfolioController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
+        
         public ActionResult Delete(int id)
         {
             Portfolio portfolio = _context.Portfolios.Find(id);
@@ -150,8 +150,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: PortfolioController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+       
         public ActionResult PermaDelete(int id)
         {
             Portfolio portfolio = _context.Portfolios.Find(id);

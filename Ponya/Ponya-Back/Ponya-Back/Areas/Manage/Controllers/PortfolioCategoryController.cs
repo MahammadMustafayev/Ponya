@@ -64,7 +64,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: PortfolioCategoryController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
+       
         public ActionResult Delete(int id)
         {
             PortfolioCategory portfolioCategory = _context.PortfolioCategories.Find(id);
@@ -77,8 +77,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: PortfolioCategoryController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult PermaDelete(int id)
         {
             PortfolioCategory portfolioCategory = _context.PortfolioCategories.Find(id);

@@ -70,7 +70,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: PricingController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
+       
         public ActionResult Delete(int id)
         {
             Pricing pricing = _context.Pricings.Find(id);
@@ -81,9 +81,18 @@ namespace Ponya_Back.Areas.Manage.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult New(int id)
+        {
+            Pricing pricing = _context.Pricings.Find(id);
+            if (pricing is null) return RedirectToAction("Index", "404");
+            if (pricing.IsNew == false) pricing.IsNew = true;
+            pricing.IsNew = false;
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
         // POST: PricingController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult PermaDelete(int id)
         {
             Pricing pricing = _context.Pricings.Find(id);

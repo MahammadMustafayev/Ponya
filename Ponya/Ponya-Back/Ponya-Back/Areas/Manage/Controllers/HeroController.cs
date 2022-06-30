@@ -136,7 +136,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
-        [HttpPost,ValidateAntiForgeryToken]
+        
         // GET: HeroController/Delete/5
         public ActionResult Delete(int id)
         {
@@ -153,8 +153,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: HeroController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult PermaDelete(int id)
         {
             Hero hero = _context.Heroes.Find(id);

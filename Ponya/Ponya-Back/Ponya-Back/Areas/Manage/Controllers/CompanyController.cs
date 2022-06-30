@@ -131,7 +131,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // GET: CompanyController/Delete/5
-        [HttpPost,ValidateAntiForgeryToken]
+        
         public ActionResult Delete(int id)
         {
             Companies companies = _context.Companies.Find(id);
@@ -146,8 +146,7 @@ namespace Ponya_Back.Areas.Manage.Controllers
         }
 
         // POST: CompanyController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
         public ActionResult PermaDelete(int id)
         {
             Companies companies = _context.Companies.Find(id);

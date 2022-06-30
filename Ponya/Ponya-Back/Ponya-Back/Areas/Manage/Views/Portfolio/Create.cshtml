@@ -12,12 +12,11 @@
 
             
             <div class="form-group col-md-4">
-                @if (Model.PortfolioCategory.IsDeleted == false)
-                {
+                
                     <select asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.Categories,nameof(PortfolioCategory.Id),nameof(PortfolioCategory.CategoryName)))" class="form-select">
                         <option disabled selected>Categories</option>
                     </select>
-                }
+                
 
             </div>
         </div>
